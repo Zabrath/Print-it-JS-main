@@ -29,6 +29,21 @@ let image = document.querySelector(".banner-img")
 let texte = document.querySelector(".banner-text")
 
 
+function update(){
+		//attribution des images
+		image.setAttribute("src","./assets/images/slideshow/"+slides[compteurSlides].image)
+		// attribution du texte
+		texte.innerHTML = slides[compteurSlides].tagLine
+		//suppresion des dots selected
+		bullet.forEach((dot) => {
+			dot.classList.remove("dot_selected")
+		})
+		//ajout dot selected à la bullet compteurslides
+		bullet[compteurSlides].classList.add("dot_selected")
+
+}
+
+
 
 //Evenement clique
 let arrowRight = document.querySelector (".arrow_right")
@@ -36,20 +51,11 @@ arrowRight.addEventListener("click",function(){
 	//fonctionnement compteur
 	compteurSlides++
 	// reset compteur pour éviter la buté
-	if (compteurSlides > 3) {
+	if (compteurSlides > slides.length - 1) {
 
 		compteurSlides = 0		
 	}
-	//attribution des images
-	image.setAttribute("src","./assets/images/slideshow/"+slides[compteurSlides].image)
-	// attribution du texte
-	texte.innerHTML = slides[compteurSlides].tagLine
-	//suppresion des dots selected
-	bullet.forEach((dot) => {
-		dot.classList.remove("dot_selected")
-	})
-	//ajout dot selected à la bullet compteurslides
-	bullet[compteurSlides].classList.add("dot_selected")
+	update();
 
 })
 
@@ -59,17 +65,9 @@ arrowLeft.addEventListener("click",function(){
 	compteurSlides--
 	if (compteurSlides < 0) {
 
-		compteurSlides = 3		
+		compteurSlides = slides.length - 1		
 	}
-
-	image.setAttribute("src","./assets/images/slideshow/"+slides[compteurSlides].image)
-
-	texte.innerHTML = slides[compteurSlides].tagLine
-
-	bullet.forEach((dot) => {
-		dot.classList.remove("dot_selected")
-	})
-	bullet[compteurSlides].classList.add("dot_selected")
+update();
 })
 
 
