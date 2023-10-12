@@ -29,6 +29,7 @@ let image = document.querySelector(".banner-img")
 let texte = document.querySelector(".banner-text")
 
 
+//création de la foncion qui boucle le carrousel
 function update(){
 		//attribution des images
 		image.setAttribute("src","./assets/images/slideshow/"+slides[compteurSlides].image)
@@ -60,10 +61,10 @@ arrowRight.addEventListener("click",function(){
 })
 
 
-let arrowLeft = document.querySelector (".arrow_left")
+let arrowLeft = document.querySelector(".arrow_left")
 arrowLeft.addEventListener("click",function(){
 	compteurSlides--
-	if (compteurSlides < 0) {
+	if (compteurSlides < 0){
 
 		compteurSlides = slides.length - 1		
 	}
@@ -73,7 +74,7 @@ update();
 
 // boucle bullets slide
 
-for (let compteur = 0; compteur < slides.length; compteur++) {
+for (let compteur = 0; compteur < slides.length; compteur++){
 //création balise
 let dot = document.createElement("p")
 // ajout class
